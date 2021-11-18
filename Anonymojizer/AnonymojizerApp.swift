@@ -5,7 +5,7 @@ import SwiftUI
 /// V3 - Choose from gallery or camera
 /// V4 - Choose any emoji or colors
 
-/// TODO:
+/// TODO V1:
 /// [X] - Pick an image from the gallery
 /// [X] - Proceed to V1 face recognition
 /// [ ] - Write emojis into te UIImage at the faces position
