@@ -60,3 +60,9 @@ class Anonymojizer: Anonymizer {
         completion(imageView)
     }
 }
+
+extension Anonymojizer {
+    static var preview: Anonymojizer {
+        Anonymojizer(faceDetector: SimpleFaceDetector())
+    }
+}

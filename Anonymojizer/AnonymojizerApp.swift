@@ -6,10 +6,12 @@ import SwiftUI
 /// V4 - Choose any emoji or colors
 
 /// TODO:
-/// [ ] - Ask user permission to access the gallery
 /// [X] - Pick an image from the gallery
-/// [ ] - Proceed to V1 face recognition
-/// [ ] - Save image to the gallery
+/// [X] - Proceed to V1 face recognition
+/// [ ] - Write emojis into te UIImage at the faces position
+/// [X] - Ask user permission to access the gallery
+/// [X] - Save image to the gallery
+/// [ ] - Assemble all
 
 @main
 struct AnonymojizerApp: App {
@@ -18,7 +20,11 @@ struct AnonymojizerApp: App {
             let faceDetector = SimpleFaceDetector()
             let anonymizer = Anonymojizer(faceDetector: faceDetector)
 
-            ContentView(anonymizer: anonymizer)
+            ContentView(
+                anonymizer: anonymizer,
+                imageProcessor: ImageProcessor(),
+                imageSaver: ImageSaver()
+            )
         }
     }
 }
