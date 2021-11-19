@@ -1,4 +1,4 @@
-# 😃 Anonymojizer
+# 😃 Anonymojizer [WIP]
 Anonymize people in photos by replacing their faces by emojis.
 
 ## How to use it ?
