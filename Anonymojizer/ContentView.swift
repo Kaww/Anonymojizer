@@ -3,7 +3,6 @@ import SwiftUI
 struct ContentView: View {
 
     let anonymizer: Anonymizer
-    let imageProcessor: ImageProcessor
     let imageSaver: ImageSaver
 
     @State private var pickedImage: UIImage?
@@ -11,50 +10,68 @@ struct ContentView: View {
     @State private var processedImage: UIImage?
 
     var body: some View {
-        VStack {
-            if let processedImage = processedImage {
-                Image(uiImage: processedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } else if let pickedImage = pickedImage {
-                Image(uiImage: pickedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-
-            HStack {
-                Button("Pick") {
-                    showImagePicker = true
-                }
-
-                Button("Process") {
-                    if let pickedImage = pickedImage {
-                        processedImage = imageProcessor.textToImage(
-                            drawText: "QERQWERQWERQWE",
-                            inImage: pickedImage,
-                            atPoint: CGPoint(x: pickedImage.size.width / 2, y: pickedImage.size.height / 2)
-                        )
-                    } else {
-                        print("Nothing to process.")
-                    }
-                }
-
-                Button("Save") {
-                    if let processedImage = processedImage {
-                        imageSaver.save(processedImage)
-                    } else {
-                        print("No processed image to save.")
-                    }
+        NavigationView {
+            VStack {
+                if let processedImage = processedImage {
+                    Image(uiImage: processedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } else if let pickedImage = pickedImage {
+                    Image(uiImage: pickedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 }
             }
-        }
-        .sheet(isPresented: $showImagePicker, onDismiss: clearAfterSelection) {
-            ImagePicker(image: $pickedImage)
+            .sheet(isPresented: $showImagePicker, onDismiss: clearAfterSelection) {
+                ImagePicker(image: $pickedImage)
+            }
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Anonymojizer")
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .foregroundColor(.blue)
+                }
+
+                ToolbarItemGroup(placement: .bottomBar) {
+                    Button(action: pickImage) {
+                        Text("Choose a Photo")
+                    }
+
+                    Button(action: processImage) {
+                        Text("Anonymize")
+                    }
+
+                    Button(action: saveProcessedImage) {
+                        Text("Save Photo")
+                    }
+                }
+            }
         }
     }
 
     private func clearAfterSelection() {
         processedImage = nil
+    }
+
+    private func pickImage() {
+        showImagePicker = true
+    }
+
+    private func processImage() {
+        if let pickedImage = pickedImage {
+            anonymizer.anonymize(pickedImage, using: "😎") { anonymizedImage in
+                guard let anonymizedImage = anonymizedImage else { return }
+                self.processedImage = anonymizedImage
+            }
+        }
+    }
+
+    private func saveProcessedImage() {
+        if let processedImage = processedImage {
+            imageSaver.save(processedImage)
+        } else {
+            print("No processed image to save.")
+        }
     }
 }
 
@@ -62,7 +79,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
             anonymizer: Anonymojizer.preview,
-            imageProcessor: ImageProcessor(),
             imageSaver: ImageSaver()
         )
     }

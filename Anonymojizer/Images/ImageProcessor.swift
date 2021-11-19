@@ -1,9 +1,9 @@
 import UIKit
 
 struct ImageProcessor {
-    func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage? {
+    func textToImage(drawText text: String, inImage image: UIImage, rect: CGRect) -> UIImage? {
         let textColor = UIColor.white
-        let textFont = UIFont.systemFont(ofSize: 50)
+        let textFont = UIFont.systemFont(ofSize: rect.height)
 
         let scale = UIScreen.main.scale
         UIGraphicsBeginImageContextWithOptions(image.size, false, scale)
@@ -16,7 +16,7 @@ struct ImageProcessor {
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
 
         text.draw(
-            in: CGRect(origin: point, size: image.size),
+            in: CGRect(origin: rect.origin, size: rect.size),
             withAttributes: textFontAttributes
         )
 

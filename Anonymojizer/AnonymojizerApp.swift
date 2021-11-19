@@ -8,22 +8,29 @@ import SwiftUI
 /// TODO V1:
 /// [X] - Pick an image from the gallery
 /// [X] - Proceed to V1 face recognition
-/// [ ] - Write emojis into te UIImage at the faces position
+/// [X] - Write emojis into te UIImage at the faces position
 /// [X] - Ask user permission to access the gallery
 /// [X] - Save image to the gallery
-/// [ ] - Assemble all
+/// [X] - Assemble all
+/// [ ] - Fix inconsistencies
+///
+/// More:
+/// [ ] - Use face's roll, yaw and pitch to make the emoji match the face orientation
 
 @main
 struct AnonymojizerApp: App {
     var body: some Scene {
         WindowGroup {
             let faceDetector = SimpleFaceDetector()
-            let anonymizer = Anonymojizer(faceDetector: faceDetector)
+            let anonymizer = Anonymojizer(
+                faceDetector: faceDetector,
+                imageProcessor: ImageProcessor()
+            )
+            let imageSaver = ImageSaver()
 
             ContentView(
                 anonymizer: anonymizer,
-                imageProcessor: ImageProcessor(),
-                imageSaver: ImageSaver()
+                imageSaver: imageSaver
             )
         }
     }

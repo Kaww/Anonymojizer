@@ -3,21 +3,27 @@ import Vision
 
 class Anonymojizer: Anonymizer {
     var faceDetector: FaceDetector
+    let imageProcessor: ImageProcessor
 
-    init(faceDetector: FaceDetector) {
+    init(
+        faceDetector: FaceDetector,
+        imageProcessor: ImageProcessor
+    ) {
         self.faceDetector = faceDetector
+        self.imageProcessor = imageProcessor
     }
 
-    func anonymize(_ image: UIImage, using emoji: String, imageViewFrame: CGRect, completion: @escaping (UIImageView?) -> Void) {
+    func anonymize(_ image: UIImage, using emoji: String, completion: @escaping (UIImage?) -> Void) {
         faceDetector.detectFaces(in: image) { observations in
-            if let observations = observations {
+            if let observations = observations, observations.count > 0 {
                 self.processAnonymization(
                     in: image,
                     observations: observations,
-                    imageFrame: imageViewFrame,
+                    using: emoji,
                     completion: completion
                 )
             } else {
+                print("No faces found.")
                 completion(nil)
             }
         }
@@ -26,43 +32,41 @@ class Anonymojizer: Anonymizer {
     private func processAnonymization(
         in image: UIImage,
         observations: [VNFaceObservation],
-        imageFrame: CGRect,
-        completion: @escaping (UIImageView?) -> Void
+        using emoji: String,
+        completion: @escaping (UIImage?) -> Void
     ) {
         guard let cgImage = image.cgImage else {
             completion(nil)
             return
         }
 
-        let imageRect = determineScale(cgImage: cgImage, imageViewFrame: imageFrame)
+        let imageRect = determineScale(cgImage: cgImage, imageViewFrame: CGRect(origin: .zero, size: image.size))
 
-        let imageView = UIImageView(image: image)
+        var processingImage = image
 
         for observation in observations {
             let faceRect = convertUnitToPoint(originalImageRect: imageRect, targetRect: observation.boundingBox)
 
-            let adjustedRect = CGRect(
-                x: faceRect.origin.x,
-                y: faceRect.origin.y,
-                width: faceRect.size.width,
-                height: faceRect.size.height
+            print("Drawing \"\(emoji)\" in face found in: \(faceRect)")
+            let newProcessedImage = imageProcessor.textToImage(
+                drawText: emoji,
+                inImage: processingImage,
+                rect: faceRect
             )
-
-            let textLayer = CATextLayer()
-            textLayer.string = "😄"
-            textLayer.fontSize = faceRect.width
-            textLayer.frame = adjustedRect
-            textLayer.contentsScale = UIScreen.main.scale
-
-            imageView.layer.addSublayer(textLayer)
+            if let newProcessedImage = newProcessedImage {
+                processingImage = newProcessedImage
+            }
         }
 
-        completion(imageView)
+        completion(processingImage)
     }
 }
 
 extension Anonymojizer {
     static var preview: Anonymojizer {
-        Anonymojizer(faceDetector: SimpleFaceDetector())
+        Anonymojizer(
+            faceDetector: SimpleFaceDetector(),
+            imageProcessor: ImageProcessor()
+        )
     }
 }
