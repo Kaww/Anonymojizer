@@ -59,7 +59,7 @@ struct ContentView: View {
 
     private func processImage() {
         if let pickedImage = pickedImage {
-            anonymizer.anonymize(pickedImage, using: "😎") { anonymizedImage in
+            anonymizer.anonymize(pickedImage, with: .emoji("😀")) { anonymizedImage in
                 guard let anonymizedImage = anonymizedImage else { return }
                 self.processedImage = anonymizedImage
             }
@@ -78,7 +78,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
-            anonymizer: Anonymojizer.preview,
+            anonymizer: Anonymizer.preview,
             imageSaver: ImageSaver()
         )
     }

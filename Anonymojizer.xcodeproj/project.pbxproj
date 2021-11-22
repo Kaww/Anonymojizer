@@ -7,34 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		592350652733D64400EC2AAD /* SimpleFaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592350642733D64400EC2AAD /* SimpleFaceDetector.swift */; };
-		592350672733D67500EC2AAD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592350662733D67500EC2AAD /* Utils.swift */; };
-		5923506B2733D6B900EC2AAD /* Anonymizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5923506A2733D6B900EC2AAD /* Anonymizer.swift */; };
-		5923506D2733D6E500EC2AAD /* FaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5923506C2733D6E500EC2AAD /* FaceDetector.swift */; };
+		592350652733D64400EC2AAD /* FaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592350642733D64400EC2AAD /* FaceDetector.swift */; };
 		59B62471272EE04100C5F309 /* AnonymojizerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B62470272EE04100C5F309 /* AnonymojizerApp.swift */; };
 		59B62473272EE04100C5F309 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B62472272EE04100C5F309 /* ContentView.swift */; };
 		59B62475272EE04300C5F309 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B62474272EE04300C5F309 /* Assets.xcassets */; };
 		59B62478272EE04300C5F309 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B62477272EE04300C5F309 /* Preview Assets.xcassets */; };
 		59B6247F272EE4A300C5F309 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B6247E272EE4A300C5F309 /* ImagePicker.swift */; };
-		59B62481272EEDBF00C5F309 /* Anonymojizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B62480272EEDBF00C5F309 /* Anonymojizer.swift */; };
-		59F90EC52746FE85007A7B9A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC42746FE85007A7B9A /* ImageProcessor.swift */; };
+		59B62481272EEDBF00C5F309 /* Anonymizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B62480272EEDBF00C5F309 /* Anonymizer.swift */; };
+		59F90EC52746FE85007A7B9A /* UIImage+drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */; };
 		59F90EC727470052007A7B9A /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC627470052007A7B9A /* ImageSaver.swift */; };
+		59F90ECA274C37AC007A7B9A /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC9274C37AC007A7B9A /* Calculations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		592350642733D64400EC2AAD /* SimpleFaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleFaceDetector.swift; sourceTree = "<group>"; };
-		592350662733D67500EC2AAD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		5923506A2733D6B900EC2AAD /* Anonymizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anonymizer.swift; sourceTree = "<group>"; };
-		5923506C2733D6E500EC2AAD /* FaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetector.swift; sourceTree = "<group>"; };
+		592350642733D64400EC2AAD /* FaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetector.swift; sourceTree = "<group>"; };
 		59B6246D272EE04100C5F309 /* Anonymojizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anonymojizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B62470272EE04100C5F309 /* AnonymojizerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymojizerApp.swift; sourceTree = "<group>"; };
 		59B62472272EE04100C5F309 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		59B62474272EE04300C5F309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59B62477272EE04300C5F309 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		59B6247E272EE4A300C5F309 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		59B62480272EEDBF00C5F309 /* Anonymojizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anonymojizer.swift; sourceTree = "<group>"; };
-		59F90EC42746FE85007A7B9A /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		59B62480272EEDBF00C5F309 /* Anonymizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anonymizer.swift; sourceTree = "<group>"; };
+		59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+drawing.swift"; sourceTree = "<group>"; };
 		59F90EC627470052007A7B9A /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		59F90EC9274C37AC007A7B9A /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +47,7 @@
 		592350682733D68D00EC2AAD /* FaceDetection */ = {
 			isa = PBXGroup;
 			children = (
-				5923506C2733D6E500EC2AAD /* FaceDetector.swift */,
-				592350642733D64400EC2AAD /* SimpleFaceDetector.swift */,
+				592350642733D64400EC2AAD /* FaceDetector.swift */,
 			);
 			path = FaceDetection;
 			sourceTree = "<group>";
@@ -60,8 +55,7 @@
 		592350692733D69E00EC2AAD /* Anonymization */ = {
 			isa = PBXGroup;
 			children = (
-				5923506A2733D6B900EC2AAD /* Anonymizer.swift */,
-				59B62480272EEDBF00C5F309 /* Anonymojizer.swift */,
+				59B62480272EEDBF00C5F309 /* Anonymizer.swift */,
 			);
 			path = Anonymization;
 			sourceTree = "<group>";
@@ -70,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				59B6247E272EE4A300C5F309 /* ImagePicker.swift */,
-				59F90EC42746FE85007A7B9A /* ImageProcessor.swift */,
 				59F90EC627470052007A7B9A /* ImageSaver.swift */,
 			);
 			path = Images;
@@ -109,7 +102,7 @@
 				592350682733D68D00EC2AAD /* FaceDetection */,
 				592350692733D69E00EC2AAD /* Anonymization */,
 				5923506E2733D71400EC2AAD /* Images */,
-				592350662733D67500EC2AAD /* Utils.swift */,
+				59F90EC8274C377C007A7B9A /* Utils */,
 				5923506F2733D74100EC2AAD /* Supporting Files */,
 			);
 			path = Anonymojizer;
@@ -121,6 +114,15 @@
 				59B62477272EE04300C5F309 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		59F90EC8274C377C007A7B9A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59F90EC9274C37AC007A7B9A /* Calculations.swift */,
+				59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,16 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				592350652733D64400EC2AAD /* SimpleFaceDetector.swift in Sources */,
-				59F90EC52746FE85007A7B9A /* ImageProcessor.swift in Sources */,
+				592350652733D64400EC2AAD /* FaceDetector.swift in Sources */,
+				59F90EC52746FE85007A7B9A /* UIImage+drawing.swift in Sources */,
 				59B6247F272EE4A300C5F309 /* ImagePicker.swift in Sources */,
-				592350672733D67500EC2AAD /* Utils.swift in Sources */,
+				59F90ECA274C37AC007A7B9A /* Calculations.swift in Sources */,
 				59B62473272EE04100C5F309 /* ContentView.swift in Sources */,
-				59B62481272EEDBF00C5F309 /* Anonymojizer.swift in Sources */,
+				59B62481272EEDBF00C5F309 /* Anonymizer.swift in Sources */,
 				59B62471272EE04100C5F309 /* AnonymojizerApp.swift in Sources */,
 				59F90EC727470052007A7B9A /* ImageSaver.swift in Sources */,
-				5923506D2733D6E500EC2AAD /* FaceDetector.swift in Sources */,
-				5923506B2733D6B900EC2AAD /* Anonymizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
