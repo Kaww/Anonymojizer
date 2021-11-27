@@ -51,18 +51,15 @@ struct Anonymizer {
         completion: @escaping (UIImage?) -> Void
     ) {
         let imageRect = CGRect(origin: .zero, size: image.size)
-        var processingImage = image
-
-        for observation in observations {
-            let faceRect = convertUnitToPoint(
+        let facesRects = observations.map {
+            convertUnitToPoint(
                 originalImageRect: imageRect,
-                targetRect: observation.boundingBox
+                targetRect: $0.boundingBox
             )
-            print("Drawing \"\(emoji)\" in face found in: \(faceRect)")
-            processingImage = processingImage.write(emoji, in: faceRect)
         }
+        let newImage = image.write(emoji, in: facesRects)
 
-        completion(processingImage)
+        completion(newImage)
     }
 }
 
