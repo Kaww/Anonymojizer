@@ -21,7 +21,7 @@ import SwiftUI
 /// [ ] - Haptics
 ///
 /// TODO V3:
-/// [ ] - Add Camera picker
+/// [X] - Add Camera picker
 
 /// V4 - Use face's roll, yaw and pitch to make the emoji match the face orientation
 /// V5 - Other anonymization methods (blur, fill, ...)

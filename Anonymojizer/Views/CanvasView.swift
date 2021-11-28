@@ -16,6 +16,7 @@ struct CanvasView: View {
     var onImagePicked: (UIImage) -> Void
 
     @State private var showImagePicker = false
+    @State private var showCameraPicker = false
 
     var body: some View {
         VStack {
@@ -27,10 +28,6 @@ struct CanvasView: View {
         }
         .animation(.easeInOut(duration: 0.3), value: presentedImage)
         .padding()
-        .sheet(isPresented: $showImagePicker) {
-            ImagePicker(onImagePicked: onImagePicked)
-                .edgesIgnoringSafeArea([.horizontal, .bottom])
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: onTrashButtonTapped) {
@@ -77,8 +74,16 @@ struct CanvasView: View {
             .overlay(
                 VStack {
                     cameraButton
+                        .fullScreenCover(isPresented: $showCameraPicker) {
+                            ImagePicker(onImagePicked: onImagePicked, source: .camera)
+                                .edgesIgnoringSafeArea(.all)
+                        }
                     Divider()
                     imagePickerButton
+                        .sheet(isPresented: $showImagePicker) {
+                            ImagePicker(onImagePicked: onImagePicked, source: .photoLibrary)
+                                .edgesIgnoringSafeArea([.horizontal, .bottom])
+                        }
                 }
             )
     }
@@ -101,7 +106,7 @@ struct CanvasView: View {
     }
 
     private var cameraButton: some View {
-        Button(action: openImagePicker) {
+        Button(action: openCameraPicker) {
             VStack {
                 Image(systemName: "camera.fill")
                     .resizable()
@@ -118,6 +123,17 @@ struct CanvasView: View {
     }
 
     // MARK: Private methods
+
+    private func openCameraPicker() {
+        PHPhotoLibrary.requestAuthorization { status in
+            guard status == .authorized else {
+                print("Camera access not allowed by user.")
+                return
+            }
+
+            showCameraPicker = true
+        }
+    }
 
     private func openImagePicker() {
         PHPhotoLibrary.requestAuthorization { status in
