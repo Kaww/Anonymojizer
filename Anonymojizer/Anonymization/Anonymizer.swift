@@ -7,49 +7,25 @@ struct Anonymizer {
         case emoji(_ value: Character)
     }
 
-    var faceDetector: FaceDetector
-
-    init(faceDetector: FaceDetector) {
-        self.faceDetector = faceDetector
-    }
-
     func anonymize(
         _ image: UIImage,
         with method: Method,
-        completion: @escaping (UIImage?) -> Void
+        basedOn observations: [VNFaceObservation],
+        onFinish: @escaping (UIImage?) -> Void
     ) {
         switch method {
         case let .emoji(emoji):
-            anonymize(image, emoji: emoji, completion: completion)
+            emojiAnonymization(image, emoji: emoji, observations: observations, completion: onFinish)
         }
     }
 
-    private func anonymize(
+    private func emojiAnonymization(
         _ image: UIImage,
         emoji: Character,
-        completion: @escaping (UIImage?) -> Void
-    ) {
-        faceDetector.detectFaces(in: image) { observations in
-            if let observations = observations, observations.count > 0 {
-                self.processAnonymization(
-                    in: image,
-                    observations: observations,
-                    using: emoji,
-                    completion: completion
-                )
-            } else {
-                print("No faces found.")
-                completion(nil)
-            }
-        }
-    }
-
-    private func processAnonymization(
-        in image: UIImage,
         observations: [VNFaceObservation],
-        using emoji: Character,
         completion: @escaping (UIImage?) -> Void
     ) {
+        print("Anonymizer: anonymizing with emoji \(emoji)...")
         let imageRect = CGRect(origin: .zero, size: image.size)
         let facesRects = observations.map {
             convertUnitToPoint(
@@ -65,8 +41,6 @@ struct Anonymizer {
 
 extension Anonymizer {
     static var preview: Anonymizer {
-        Anonymizer(
-            faceDetector: FaceDetector()
-        )
+        Anonymizer()
     }
 }

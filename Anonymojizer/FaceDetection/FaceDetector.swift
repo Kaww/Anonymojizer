@@ -15,18 +15,28 @@ struct FaceDetector {
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: orientation, options: [:])
 
         do {
+            print("FaceDetector: looking for faces...")
             try imageRequestHandler.perform([faceDetectionRequest])
 
             guard let observations = faceDetectionRequest.results else {
+                print("FaceDetector: failed to process request.")
                 completion(nil)
                 return
             }
 
+            print("FaceDetector: returning observations.")
             completion(observations)
 
         } catch let error as NSError {
+            print("FaceDetector: error.")
             print(error)
             completion(nil)
         }
+    }
+}
+
+extension FaceDetector {
+    static var preview: FaceDetector {
+        FaceDetector()
     }
 }
