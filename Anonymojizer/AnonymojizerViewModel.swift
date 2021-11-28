@@ -6,6 +6,7 @@ class AnonymojizerViewModel: ObservableObject {
     @Published var image: UIImage?
     @Published var processedImage: UIImage?
     @Published var method: Anonymizer.Method = .emoji("😀")
+    @Published var isLoading = false
 
     private let faceDetector: FaceDetector
     private let anonymizer: Anonymizer
@@ -26,15 +27,18 @@ class AnonymojizerViewModel: ObservableObject {
     // MARK: Actions
 
     func accept(_ image: UIImage) {
+        print("VM: new picked image.")
         self.image = image
         processedImage = nil
     }
 
     func processImage() {
         print("VM: process image. Loading...")
+        isLoading = true
         DispatchQueue.global(qos: .userInitiated).async {
             self.process { anonymizedImage in
                 DispatchQueue.main.async {
+                    self.isLoading = false
                     print("VM: processing done.")
                     if let anonymizedImage = anonymizedImage {
                         self.processedImage = anonymizedImage
@@ -47,17 +51,17 @@ class AnonymojizerViewModel: ObservableObject {
         }
     }
 
-    /// Restart from source image
-    func restoreImage() {
-        processedImage = nil
-        print("VM: restored source image.")
-    }
-
     /// Restart canvas without any images
     func clear() {
         image = nil
         processedImage = nil
         print("VM: all images cleared.")
+    }
+
+    /// Restart from source image
+    func resetImage() {
+        processedImage = nil
+        print("VM: restored source image.")
     }
 
     func saveProcessedImage() {
