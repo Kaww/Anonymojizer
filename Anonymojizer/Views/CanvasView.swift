@@ -5,6 +5,10 @@ struct CanvasView: View {
     private let cornerRadius: CGFloat = 20
     private let shadowRadius: CGFloat = 15
 
+    // Rotation animation with matched geometry effect
+    @Namespace private var canvasNamespace
+    private let mainShapeId = "SHAPE"
+
     var presentedImage: UIImage?
     var showLoader: Bool
     var onTrashButtonTapped: () -> Void
@@ -21,6 +25,7 @@ struct CanvasView: View {
                 placeholderView
             }
         }
+        .animation(.easeInOut(duration: 0.5), value: presentedImage)
         .padding()
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(onImagePicked: onImagePicked)
@@ -57,6 +62,7 @@ struct CanvasView: View {
                 .clipShape(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                 )
+                .matchedGeometryEffect(id: mainShapeId, in: canvasNamespace)
                 .shadow(radius: shadowRadius)
 
             Spacer()
@@ -65,6 +71,7 @@ struct CanvasView: View {
 
     private var placeholderView: some View {
         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            .matchedGeometryEffect(id: mainShapeId, in: canvasNamespace)
             .foregroundColor(.gray.opacity(0.2))
             .shadow(radius: shadowRadius)
             .overlay(

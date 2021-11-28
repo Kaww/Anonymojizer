@@ -5,6 +5,12 @@ struct ToolbarView: View {
     @Environment(\.verticalSizeClass) var vertical: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontal: UserInterfaceSizeClass?
 
+    // Rotation animation with matched geometry effect
+    @Namespace private var toolbarNamespace
+    private let methodButtonId = "METHOD_BTN"
+    private let processButtonId = "PROCESS_BTN"
+    private let exportButtonId = "EXPORT_BTN"
+
     @Binding var method: Anonymizer.Method
     var isMethodButtonEnabled: Bool
     var isProcessButtonEnabled: Bool
@@ -48,6 +54,7 @@ struct ToolbarView: View {
         }
         .buttonStyle(.plain)
         .disabled(!isMethodButtonEnabled)
+        .matchedGeometryEffect(id: methodButtonId, in: toolbarNamespace)
     }
 
     private func processButton() -> some View {
@@ -64,6 +71,7 @@ struct ToolbarView: View {
         }
         .buttonStyle(.plain)
         .disabled(!isProcessButtonEnabled)
+        .matchedGeometryEffect(id: processButtonId, in: toolbarNamespace)
     }
 
     private func exportButton() -> some View {
@@ -80,6 +88,7 @@ struct ToolbarView: View {
         }
         .buttonStyle(.plain)
         .disabled(!isExportButtonEnabled)
+        .matchedGeometryEffect(id: exportButtonId, in: toolbarNamespace)
     }
 }
 

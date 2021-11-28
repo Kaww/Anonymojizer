@@ -10,7 +10,7 @@ import SwiftUI
 /// [X] - Ask user permission to read in the gallery
 /// [X] - Process in a background thread
 /// [X] - UI
-/// [ ] - Adapt UI to rotation + rotation animation
+/// [X] - Adapt UI to rotation + rotation animation
 /// [ ] - Export sharesheet
 /// [ ] - Emoji picker
 ///

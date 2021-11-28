@@ -31,6 +31,7 @@ struct AnonymojizerScreen: View {
 
     private var content: some View {
         Group {
+            Spacer()
             CanvasView(
                 presentedImage: viewModel.processedImage ?? viewModel.image,
                 showLoader: viewModel.isLoading,
@@ -38,7 +39,7 @@ struct AnonymojizerScreen: View {
                 onResetButtonTapped: viewModel.resetImage,
                 onImagePicked: viewModel.accept
             )
-
+            Spacer()
             ToolbarView(
                 method: $viewModel.method,
                 isMethodButtonEnabled: viewModel.image != nil,
