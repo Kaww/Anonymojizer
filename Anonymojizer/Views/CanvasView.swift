@@ -25,7 +25,7 @@ struct CanvasView: View {
                 placeholderView
             }
         }
-        .animation(.easeInOut(duration: 0.5), value: presentedImage)
+        .animation(.easeInOut(duration: 0.3), value: presentedImage)
         .padding()
         .sheet(isPresented: $showImagePicker) {
             ImagePicker(onImagePicked: onImagePicked)

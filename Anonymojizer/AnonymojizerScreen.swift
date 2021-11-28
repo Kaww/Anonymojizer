@@ -46,10 +46,12 @@ struct AnonymojizerScreen: View {
                 isProcessButtonEnabled: viewModel.image != nil,
                 isExportButtonEnabled: viewModel.processedImage != nil,
                 onProcessTapped: viewModel.processImage,
-                onExportButtonTapped: viewModel.saveProcessedImage
+                onExportButtonTapped: presentShareSheet
             )
         }
     }
+
+    // MARK: Subviews
 
     @ViewBuilder
     private var presentedImage: some View {
@@ -61,6 +63,16 @@ struct AnonymojizerScreen: View {
             Image(uiImage: pickedImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+        }
+    }
+
+    // MARK: Private methods
+
+    private func presentShareSheet() {
+        guard let processedImage = viewModel.processedImage else { return }
+        let activityVC = UIActivityViewController(activityItems: [processedImage], applicationActivities: nil)
+        DispatchQueue.main.async {
+            UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
     }
 }

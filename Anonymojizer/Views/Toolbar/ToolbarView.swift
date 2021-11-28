@@ -40,6 +40,8 @@ struct ToolbarView: View {
         }
     }
 
+    // MARK: Subviews
+
     private func anonymizationMethodButton() -> some View {
         Button(action: {}) {
             VStack {

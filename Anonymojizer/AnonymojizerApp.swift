@@ -11,7 +11,7 @@ import SwiftUI
 /// [X] - Process in a background thread
 /// [X] - UI
 /// [X] - Adapt UI to rotation + rotation animation
-/// [ ] - Export sharesheet
+/// [X] - Export sharesheet
 /// [ ] - Emoji picker
 ///
 /// TODO V2:
