@@ -9,7 +9,8 @@ struct CanvasView: View {
     @Namespace private var canvasNamespace
     private let mainShapeId = "SHAPE"
 
-    var presentedImage: UIImage?
+    var originalImage: UIImage?
+    var processedImage: UIImage?
     var showLoader: Bool
     var onTrashButtonTapped: () -> Void
     var onResetButtonTapped: () -> Void
@@ -17,30 +18,41 @@ struct CanvasView: View {
 
     @State private var showImagePicker = false
     @State private var showCameraPicker = false
+    @State private var showOriginal = false
+
+    private var presentingImage: UIImage? {
+        showOriginal ? originalImage : (processedImage ?? originalImage)
+    }
 
     var body: some View {
         VStack {
-            if let image = presentedImage {
+            if let image = presentingImage {
                 imageView(image)
             } else {
                 placeholderView
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: presentedImage)
+        .animation(.easeInOut(duration: 0.3), value: originalImage)
         .padding()
+        .onLongPressGesture(
+            minimumDuration: 2,
+            maximumDistance: 50,
+            perform: {},
+            onPressingChanged: { showOriginal = $0 }
+        )
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: onTrashButtonTapped) {
                     Label("Move to trash", systemImage: "trash.fill")
                 }
-                .disabled(presentedImage == nil)
+                .disabled(originalImage == nil)
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: onResetButtonTapped) {
                     Label("Reset image", systemImage: "arrow.counterclockwise")
                 }
-                .disabled(presentedImage == nil)
+                .disabled(originalImage == nil)
             }
         }
         .opacity(showLoader ? 0.5 : 1)
@@ -151,9 +163,8 @@ struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CanvasView(
-//                presentedImage: UIImage(named: "vertical"),
-//                presentedImage: UIImage(named: "vertical"),
-                presentedImage: nil,
+                originalImage: nil,
+                processedImage: nil,
                 showLoader: false,
                 onTrashButtonTapped: {},
                 onResetButtonTapped: {},

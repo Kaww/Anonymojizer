@@ -33,7 +33,8 @@ struct AnonymojizerScreen: View {
         Group {
             Spacer()
             CanvasView(
-                presentedImage: viewModel.processedImage ?? viewModel.image,
+                originalImage: viewModel.image,
+                processedImage: viewModel.processedImage,
                 showLoader: viewModel.isLoading,
                 onTrashButtonTapped: viewModel.clear,
                 onResetButtonTapped: viewModel.resetImage,
