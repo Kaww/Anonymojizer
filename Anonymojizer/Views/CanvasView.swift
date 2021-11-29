@@ -2,6 +2,8 @@ import Photos
 import SwiftUI
 
 struct CanvasView: View {
+    @EnvironmentObject var hapticsEngine: HapticsEngine
+
     private let cornerRadius: CGFloat = 20
     private let shadowRadius: CGFloat = 15
 
@@ -42,14 +44,14 @@ struct CanvasView: View {
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button(action: onTrashButtonTapped) {
+                Button(action: trashButtonTapped) {
                     Label("Move to trash", systemImage: "trash.fill")
                 }
                 .disabled(originalImage == nil)
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: onResetButtonTapped) {
+                Button(action: resetButtonTapped) {
                     Label("Reset image", systemImage: "arrow.counterclockwise")
                 }
                 .disabled(originalImage == nil)
@@ -135,6 +137,16 @@ struct CanvasView: View {
     }
 
     // MARK: Private methods
+
+    private func trashButtonTapped() {
+        hapticsEngine.notify(.error)
+        onTrashButtonTapped()
+    }
+
+    private func resetButtonTapped() {
+        hapticsEngine.tap()
+        onResetButtonTapped()
+    }
 
     private func openCameraPicker() {
         PHPhotoLibrary.requestAuthorization { status in

@@ -5,6 +5,8 @@ struct ToolbarView: View {
     @Environment(\.verticalSizeClass) var vertical: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontal: UserInterfaceSizeClass?
 
+    @EnvironmentObject var hapticsEngine: HapticsEngine
+
     // Rotation animation with matched geometry effect
     @Namespace private var toolbarNamespace
     private let methodButtonId = "METHOD_BTN"
@@ -43,7 +45,7 @@ struct ToolbarView: View {
     // MARK: Subviews
 
     private func anonymizationMethodButton() -> some View {
-        Button(action: {}) {
+        Button(action: anonymizationMethodButtonTapped) {
             VStack {
                 Image(systemName: "face.smiling")
                     .resizable()
@@ -60,7 +62,7 @@ struct ToolbarView: View {
     }
 
     private func processButton() -> some View {
-        Button(action: onProcessTapped) {
+        Button(action: processButtonTapped) {
             VStack {
                 Image(systemName: "wand.and.stars")
                     .resizable()
@@ -77,7 +79,7 @@ struct ToolbarView: View {
     }
 
     private func exportButton() -> some View {
-        Button(action: onExportButtonTapped) {
+        Button(action: exportButtonTapped) {
             VStack {
                 Image(systemName: "square.and.arrow.up.fill")
                     .resizable()
@@ -91,6 +93,23 @@ struct ToolbarView: View {
         .buttonStyle(.plain)
         .disabled(!isExportButtonEnabled)
         .matchedGeometryEffect(id: exportButtonId, in: toolbarNamespace)
+    }
+
+    // MARK: Private methods
+
+    private func anonymizationMethodButtonTapped() {
+        hapticsEngine.tap()
+        // TODO: handle tap
+    }
+
+    private func processButtonTapped() {
+        hapticsEngine.tap()
+        onProcessTapped()
+    }
+
+    private func exportButtonTapped() {
+        hapticsEngine.tap()
+        onExportButtonTapped()
     }
 }
 

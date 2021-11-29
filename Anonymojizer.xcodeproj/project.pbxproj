@@ -21,6 +21,7 @@
 		59B62478272EE04300C5F309 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59B62477272EE04300C5F309 /* Preview Assets.xcassets */; };
 		59B6247F272EE4A300C5F309 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B6247E272EE4A300C5F309 /* ImagePicker.swift */; };
 		59B62481272EEDBF00C5F309 /* Anonymizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B62480272EEDBF00C5F309 /* Anonymizer.swift */; };
+		59DA8E1B27557B0E00488750 /* HapticsEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA8E1A27557B0E00488750 /* HapticsEngine.swift */; };
 		59F90EC52746FE85007A7B9A /* UIImage+drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */; };
 		59F90EC727470052007A7B9A /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC627470052007A7B9A /* ImageSaver.swift */; };
 		59F90ECA274C37AC007A7B9A /* Calculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F90EC9274C37AC007A7B9A /* Calculations.swift */; };
@@ -42,6 +43,7 @@
 		59B62477272EE04300C5F309 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		59B6247E272EE4A300C5F309 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		59B62480272EEDBF00C5F309 /* Anonymizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anonymizer.swift; sourceTree = "<group>"; };
+		59DA8E1A27557B0E00488750 /* HapticsEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsEngine.swift; sourceTree = "<group>"; };
 		59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+drawing.swift"; sourceTree = "<group>"; };
 		59F90EC627470052007A7B9A /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		59F90EC9274C37AC007A7B9A /* Calculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculations.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				59F90EC42746FE85007A7B9A /* UIImage+drawing.swift */,
 				5973F88E2753CC1D00B9E3E3 /* Loader.swift */,
 				5973F8922753E22A00B9E3E3 /* UIApplication+keyWindow.swift */,
+				59DA8E1A27557B0E00488750 /* HapticsEngine.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				59B62473272EE04100C5F309 /* AnonymojizerScreen.swift in Sources */,
 				59B62481272EEDBF00C5F309 /* Anonymizer.swift in Sources */,
 				59B62471272EE04100C5F309 /* AnonymojizerApp.swift in Sources */,
+				59DA8E1B27557B0E00488750 /* HapticsEngine.swift in Sources */,
 				5973F88B2753B15900B9E3E3 /* View+toolbarButtonImageStyle.swift in Sources */,
 				5973F88F2753CC1D00B9E3E3 /* Loader.swift in Sources */,
 				59F90EC727470052007A7B9A /* ImageSaver.swift in Sources */,

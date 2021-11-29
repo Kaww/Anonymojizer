@@ -12,20 +12,21 @@ import SwiftUI
 /// [X] - UI
 /// [X] - Adapt UI to rotation + rotation animation
 /// [X] - Export sharesheet
+/// [X] - Add Camera picker
+/// [X] - Haptics
 /// [ ] - Emoji picker
+/// [ ] - Prevent sheets to dismiss on rotation
+/// [ ] - Localization FR/EN
 ///
 /// TODO V2:
-/// [ ] - Better flow when cancelling an image during a processing
+/// [ ] - Better flow when cancelling an image during a processing (combine ?)
 /// [ ] - Hint message
 /// [ ] - Do a first face detection to show a hint if faces are found before processing
-/// [ ] - Haptics
-///
-/// TODO V3:
-/// [X] - Add Camera picker
+/// [ ] - Select faces to anonymize
 
-/// V4 - Use face's roll, yaw and pitch to make the emoji match the face orientation
-/// V5 - Other anonymization methods (blur, fill, ...)
-/// V6 - Allow to choose the faces to Anonymojize
+/// V3 - Use face's roll, yaw and pitch to make the emoji match the face orientation
+/// V4 - Other anonymization methods (blur, fill, ...)
+/// V5 - Allow to choose the faces to Anonymojize
 
 @main
 struct AnonymojizerApp: App {
@@ -37,7 +38,10 @@ struct AnonymojizerApp: App {
                 imageSaver: ImageSaver()
             )
 
+            let hapticsEngine = HapticsEngine()
+
             AnonymojizerScreen(viewModel: viewModel)
+                .environmentObject(hapticsEngine)
         }
     }
 }
