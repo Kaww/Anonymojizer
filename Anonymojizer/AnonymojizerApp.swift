@@ -23,10 +23,11 @@ import SwiftUI
 /// [ ] - Hint message
 /// [ ] - Do a first face detection to show a hint if faces are found before processing
 /// [ ] - Select faces to anonymize
+/// [ ] - Share extension (open app from share button of any picture)
 
 /// V3 - Use face's roll, yaw and pitch to make the emoji match the face orientation
 /// V4 - Other anonymization methods (blur, fill, ...)
-/// V5 - Allow to choose the faces to Anonymojize
+/// V5 - Allow to choose the faces to Anonymojizeyou
 
 @main
 struct AnonymojizerApp: App {
