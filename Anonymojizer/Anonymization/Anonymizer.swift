@@ -27,13 +27,17 @@ struct Anonymizer {
     ) {
         print("Anonymizer: anonymizing with emoji \(emoji)...")
         let imageRect = CGRect(origin: .zero, size: image.size)
-        let facesRects = observations.map {
-            convertUnitToPoint(
-                originalImageRect: imageRect,
-                targetRect: $0.boundingBox
+        let faces = observations.map {
+            Face(
+                rect: convertUnitToPoint(
+                    originalImageRect: imageRect,
+                    targetRect: $0.boundingBox
+                ),
+                roll: CGFloat(truncating: $0.roll ?? 0)
             )
+
         }
-        let newImage = image.write(emoji, in: facesRects)
+        let newImage = image.write(emoji, in: faces)
 
         completion(newImage)
     }
