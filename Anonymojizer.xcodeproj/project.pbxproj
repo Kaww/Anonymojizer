@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		494B8D1F2774B2AA00CC3E71 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494B8D1E2774B2AA00CC3E71 /* EmojiPickerView.swift */; };
 		592350652733D64400EC2AAD /* FaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592350642733D64400EC2AAD /* FaceDetector.swift */; };
 		5973F88327538DA700B9E3E3 /* AnonymojizerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F88227538DA700B9E3E3 /* AnonymojizerViewModel.swift */; };
 		5973F8862753A79100B9E3E3 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5973F8852753A79100B9E3E3 /* CanvasView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		494B8D1E2774B2AA00CC3E71 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
 		592350642733D64400EC2AAD /* FaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetector.swift; sourceTree = "<group>"; };
 		5973F88227538DA700B9E3E3 /* AnonymojizerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymojizerViewModel.swift; sourceTree = "<group>"; };
 		5973F8852753A79100B9E3E3 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				5973F8852753A79100B9E3E3 /* CanvasView.swift */,
+				494B8D1E2774B2AA00CC3E71 /* EmojiPickerView.swift */,
 				5973F8892753B12900B9E3E3 /* Toolbar */,
 			);
 			path = Views;
@@ -246,6 +249,7 @@
 				59F90ECA274C37AC007A7B9A /* Calculations.swift in Sources */,
 				59B62473272EE04100C5F309 /* AnonymojizerScreen.swift in Sources */,
 				59B62481272EEDBF00C5F309 /* Anonymizer.swift in Sources */,
+				494B8D1F2774B2AA00CC3E71 /* EmojiPickerView.swift in Sources */,
 				59B62471272EE04100C5F309 /* AnonymojizerApp.swift in Sources */,
 				59DA8E1B27557B0E00488750 /* HapticsEngine.swift in Sources */,
 				5973F88B2753B15900B9E3E3 /* View+toolbarButtonImageStyle.swift in Sources */,

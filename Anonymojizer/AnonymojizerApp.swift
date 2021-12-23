@@ -40,7 +40,8 @@ struct AnonymojizerApp: App {
 
             let hapticsEngine = HapticsEngine()
 
-            AnonymojizerScreen(viewModel: viewModel)
+            EmojiPickerView()
+//            AnonymojizerScreen(viewModel: viewModel)
                 .environmentObject(hapticsEngine)
         }
     }
