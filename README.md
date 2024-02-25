@@ -1,6 +1,9 @@
 # 😃 Anonymojizer [WIP]
 Anonymize people in photos by replacing their faces by emojis.
 
+<img src="./Anonymojizer/Resources/before.png" width="400">
+<img src="./Anonymojizer/Resources/after.png" width="400">
+
 ## How to use it ?
 1. Pick a photo from the gallery
 2. Choose an emoji
