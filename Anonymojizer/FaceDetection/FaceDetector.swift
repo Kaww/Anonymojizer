@@ -14,6 +14,11 @@ struct FaceDetector {
         let faceDetectionRequest = VNDetectFaceRectanglesRequest()
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: orientation, options: [:])
 
+
+#if targetEnvironment(simulator)
+        faceDetectionRequest.usesCPUOnly = true
+#endif
+
         do {
             print("FaceDetector: looking for faces...")
             try imageRequestHandler.perform([faceDetectionRequest])
